@@ -1,2 +1,2 @@
-# cab
+# krux
 collection of misc tools

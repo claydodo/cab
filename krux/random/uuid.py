@@ -3,16 +3,26 @@
 import six
 import string
 from random import choice
+from hashlib import md5
 
 __all__ = [
+    'md5_uuid',
     'random_str',
     'gen_uuid4', 'gen_uuid8', 'gen_uuid10', 'gen_uuid12',
     'gen_uuid16', 'gen_uuid20', 'gen_uuid24', 'gen_uuid32',
-    'gen_uuid48', 'gen_uuid64', 'gen_uuid96', 'gen_uuid128'
+    'gen_uuid48', 'gen_uuid64', 'gen_uuid96', 'gen_uuid128',
 ]
 
 letters = string.letters if six.PY2 else string.ascii_letters
 RANDOM_CHARS = letters + string.digits
+
+
+def md5_uuid(s, length=8):
+    if (six.PY2 and isinstance(s, unicode)) or (six.PY3 and isinstance(s, str)):
+        s = s.encode('utf-8')
+    m = md5()
+    m.update(s)
+    return m.hexdigest()[:length]
 
 
 def random_str(length=16, chars=RANDOM_CHARS):

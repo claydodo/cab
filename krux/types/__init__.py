@@ -2,3 +2,4 @@
 
 from .singleton import *
 from .null import *
+from .check import *

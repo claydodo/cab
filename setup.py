@@ -8,7 +8,7 @@ import setuptools
 
 setuptools.setup(
     name="krux",
-    version="0.0.14",
+    version="0.0.16",
     author="claydodo and his little friends (xiao huo ban)",
     author_email="claydodo@foxmail.com",
     description="misc utils",

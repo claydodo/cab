@@ -2,7 +2,7 @@
 
 import six
 
-__all__ = ['pick', 'defaults']
+__all__ = ['pick', 'defaults', 'deep_update']
 
 
 def pick(d, keys):
@@ -16,3 +16,17 @@ def defaults(d1, d2, inplace=True):
         result.setdefault(k, v)
     return result
 
+
+def deep_update(a, b):
+    """deep version of dict.update()"""
+    for key in b:
+        if key in a:
+            if isinstance(a[key], dict) and isinstance(b[key], dict):
+                deep_update(a[key], b[key])
+            elif a[key] == b[key]:
+                pass
+            else:
+                a[key] = b[key]
+        else:
+            a[key] = b[key]
+    return a
